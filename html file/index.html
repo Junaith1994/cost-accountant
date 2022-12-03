@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>cost accountant</title>
+</head>
+<body>
+    <main class="bg-zinc-50 m-6">
+        <!-- Title -->
+        <div class="text-center flex-auto">
+            <h1 class="text-5xl font-bold text-cyan-600 text-center inline">Cost Accountant</h1>
+            <span><img class="w-12 inline" src="/images/budget.png" alt=""></span>
+        </div>
+        <!-- image section -->
+        <section class="grid lg:grid-cols-2 grid-rows-2 gap-3 md:grid-cols-2 grid-rows-1 md:mb-3 sm:grid-cols-1 grid-rows-1">
+            <section class="m-5 p-4 sm:my-2 md:my-2">
+                <div class="w-auto">
+                    <img class="object-contain" src="/images/cost-calculator.png" alt="cost-calculator">
+                </div>
+            </section>
+            <!-- calculator section -->
+            <section class="">
+                <div class="text-center">
+                    <h3 class="text-4xl text-center font-semibold my-5 sm:my-2 md:my-2">Income</h3>
+                    <h4 class="text-3xl text-start font-normal inline px-3">Income:</h4>
+                    <input class="bg-slate-300 text-black p-2 text-2xl font-semibold" type="text" name="" id="">
+                    <h3 class="text-4xl text-center font-semibold my-8">Expenses</h3>
+                    <p class="text-center py-3">
+                        <h4 class="text-3xl text-start font-normal inline px-3 mx-3">Food:</h4>
+                        <input class="bg-slate-300 text-black p-2 text-2xl font-semibold" type="text" name="" id="">
+                    </p>
+                    <p class="text-center py-3">
+                        <h4 class="text-3xl text-start font-normal inline px-3 mx-3">Rent:</h4>
+                        <input class="bg-slate-300 text-black p-2 text-2xl font-semibold" type="text" name="" id="">
+                    </p>
+                    <p class="text-center py-3">
+                        <h4 class="text-3xl text-start font-normal inline px-3 mx-1">Clothes:</h4>
+                        <input class="bg-slate-300 text-black p-2 text-2xl font-semibold" type="text" name="" id="">
+                    </p>
+                    <button class="m-5 py-3 px-9 bg-blue-400 font-bold text-xl text-slate-100 rounded-md">Calculate</button>
+                    <p>
+                        <h3 class="text-4xl text-center font-semibold my-8 inline">Total Expenses:</h3>
+                        <span class="text-3xl font-semibold mx-1">0</span>
+                    </p>
+                    <p class="mt-7 pt-4">
+                        <h3 class="text-4xl text-center font-semibold my-8 inline">Balance:</h3>
+                        <span class="text-3xl font-semibold mx-1">0</span>
+                    </p>
+                    <!-- Saving part -->
+                    <div>
+                        <p>
+                        <h4 class="text-3xl text-start font-normal inline px-3 mx-3">Save:</h4>
+                        <input class="bg-slate-300 text-black p-2 text-2xl font-semibold" type="text" name="" id="">
+                        <span class="text-xl font-extrabold mx-4">%</span><button
+                            class="m-5 py-3 px-9 bg-blue-400 font-bold text-xl text-slate-100 rounded-md">Save</button>
+                        </p>
+                        <p>
+                        <h3 class="text-4xl text-center font-semibold my-8 inline">Saving Amount:</h3>
+                        <span class="text-3xl font-semibold mx-1">0</span>
+                        </p>
+                        <p class="mt-3 pt-2">
+                        <h3 class="text-4xl text-center font-semibold my-8 inline">Remaining Balance:</h3>
+                        <span class="text-3xl font-semibold mx-1">0</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
