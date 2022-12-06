@@ -1,18 +1,22 @@
-// Common function
+// Common function for Balance Update and Remaining Balance
 function updateBalance(isbalance, x) {
     const balance = document.getElementById('balance');
     const remainingBal = document.getElementById('remaining-balance');
     const incomeInput = document.getElementById('income-input');
     const amount = document.getElementById(x + '-amount');
-    // const savingAmt = document.getElementById('saving-amount');
 
     if(isbalance == true) {
        if(incomeInput.value < 0 || isNaN(incomeInput.value)) {
             alert("Please input a valid income value");
         }
         else {
-            balance.innerText = parseFloat(incomeInput.value) - parseFloat(amount.innerText);
-            return balance.innerText;    
+            if(incomeInput.value == '') {
+                balance.innerText = 0;
+            }   
+            else {
+                balance.innerText = parseFloat(incomeInput.value) - parseFloat(amount.innerText);
+                return balance.innerText;
+            } 
         }
     }
     else {
@@ -26,37 +30,41 @@ function updateBalance(isbalance, x) {
     }
 }
 
-//Expenses calculation and Balance Update
+//Total expenses calculation event handler and Balance Update
 document.getElementById('calc-btn').addEventListener('click', function() {
+    const incomeInput = document.getElementById('income-input');
     const foodCost = document.getElementById('food-cost');
     const rentCost = document.getElementById('rent-cost');
     const clotheCost = document.getElementById('clothe-cost');
     const totalExpenses = document.getElementById('total-exp-amount');
     
-    if (foodCost.value < 0 || rentCost.value < 0 || clotheCost.value < 0) {
-        if (isNaN(foodCost.value) || isNaN(rentCost.value) || isNaN(clotheCost.value)) {
-            alert("Please input a number")
-        }
-        else {
-            alert("Please input a positive number")
-        }
+    // Validation for Total Expenses
+    if (isNaN(foodCost.value) || isNaN(rentCost.value) || isNaN(clotheCost.value) || foodCost.value < 0 || rentCost.value < 0 || clotheCost.value < 0) {
+        alert("Please input a positive number");
     }
     else {
-        totalExpenses.innerText = parseFloat(foodCost.value) + parseFloat(rentCost.value) + parseFloat(clotheCost.value);
+        if (foodCost.value == '' && rentCost.value == '' && clotheCost.value == '') {
+            totalExpenses.innerText = 0;
+        }
+        else {
+            totalExpenses.innerText = parseFloat(foodCost.value) + parseFloat(rentCost.value) + parseFloat(clotheCost.value);
+        }
     }
-    updateBalance(true,'total-exp');
-    // const incomeInput = document.getElementById('income-input');
-    // const balance = document.getElementById('balance');
-    // balance.innerText = parseFloat(incomeInput.value) - parseFloat(totalExpenses.innerText);
+    if(totalExpenses.innerText > incomeInput.value) {
+        alert("Your expenses has crossed your income or your expenses are equal of your income !!");
+        totalExpenses.innerText = 0;
+    }
+    else {
+        updateBalance(true, 'total-exp');
+    }
 });
 
-// Saving Amount Calculation Part
+// Saving amount calculation event handler and Remaining Balance Update
 document.getElementById('save-btn').addEventListener('click', function() {
     const incomeInput = document.getElementById('income-input');
     const savingInput = document.getElementById('saving-input');
     const balance = document.getElementById('balance');
     const savingAmt = document.getElementById('saving-amount');
-    const remainingBal = document.getElementById('remaining-balance');
     
     if(parseFloat(savingInput.value) < 0 || isNaN(savingInput.value)) {
         alert("Please input a positive number in 'Save' input field !!")
@@ -71,8 +79,5 @@ document.getElementById('save-btn').addEventListener('click', function() {
         else {
             updateBalance(false, 'saving')
         }
-    } 
-    // console.log(typeof(savingAmt.innerText));
-
-    // remainingBal.innerText = parseFloat(balance.innerText) - parseFloat(savingAmt.innerText);
+    }
 });
