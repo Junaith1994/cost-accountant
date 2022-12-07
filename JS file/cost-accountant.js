@@ -39,20 +39,22 @@ document.getElementById('calc-btn').addEventListener('click', function() {
     const totalExpenses = document.getElementById('total-exp-amount');
     
     // Validation for Total Expenses
-    if (isNaN(foodCost.value) || isNaN(rentCost.value) || isNaN(clotheCost.value) || foodCost.value < 0 || rentCost.value < 0 || clotheCost.value < 0) {
+    if (isNaN(incomeInput.value) || isNaN(foodCost.value) || isNaN(rentCost.value) || isNaN(clotheCost.value) || foodCost.value < 0 || rentCost.value < 0 || clotheCost.value < 0 || incomeInput.value < 0) {
         alert("Please input a positive number");
     }
     else {
-        if (foodCost.value == '' && rentCost.value == '' && clotheCost.value == '') {
+        if (foodCost.value == '' || rentCost.value == '' || clotheCost.value == '') {
             totalExpenses.innerText = 0;
         }
         else {
             totalExpenses.innerText = parseFloat(foodCost.value) + parseFloat(rentCost.value) + parseFloat(clotheCost.value);
         }
     }
-    if(totalExpenses.innerText > incomeInput.value) {
-        alert("Your expenses has crossed your income or your expenses are equal of your income !!");
+    // Validation for Update balance
+    if ((parseFloat(totalExpenses.innerText) > parseFloat(incomeInput.value))) {
+        alert("Your expenses has crossed your income Or your expenses are equal of your income !!");
         totalExpenses.innerText = 0;
+        updateBalance(true, 'total-exp');
     }
     else {
         updateBalance(true, 'total-exp');
@@ -66,6 +68,7 @@ document.getElementById('save-btn').addEventListener('click', function() {
     const balance = document.getElementById('balance');
     const savingAmt = document.getElementById('saving-amount');
     
+    // Validation for saving part
     if(parseFloat(savingInput.value) < 0 || isNaN(savingInput.value)) {
         alert("Please input a positive number in 'Save' input field !!")
     }
